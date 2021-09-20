@@ -19,3 +19,8 @@ const port = 5000;
 app.listen(port, () => {
     console.log('Server started in port ${port}');
 });
+
+//create a get rquesthandler
+app.get("/", (req, res) => {
+    res.json('Welcome  to my Land');
+});
