@@ -17,8 +17,8 @@ const app = express();
 //make app listen to port address
 const port = 3000;
 app.listen(port, () => {
-    console.log('Server started in port ${port}');
-});
+    console.log(`Example app listening at http://localhost:${port}`)
+})
 
 //create a get rquesthandler
 app.get("/", (req, res) => {
