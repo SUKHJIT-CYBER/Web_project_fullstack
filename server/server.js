@@ -1,16 +1,5 @@
 //Import express js Frameworks
-const express = require("express");
-
-
-
-
-
-
-
-
-
-
-
+const express = require("express")
 
 // Initialsingan app instant
 const app = express();
@@ -20,7 +9,9 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 
-//create a get rquesthandler
-app.get("/", (req, res) => {
-    res.json('Welcome  to my Land');
-});
+//import root
+const root = require("./routes/root");
+
+
+//add the route to middle ware
+app.use("/", root);
