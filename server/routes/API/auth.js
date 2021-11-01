@@ -3,6 +3,15 @@ const express = require("express");
 
 //cretae a route app
 const app = express.Router();
+//import js lib
+const express = require("express");
+const {
+  CheckUserNamePassword,
+  RegisterNewUser,
+  VerifyUser
+} = require("../../helpers/Users");
+
+
 
 //endpont to verigy user
 app.get("/verify/:Username", (req, res) => {
@@ -16,12 +25,12 @@ app.get("/verify/:Username", (req, res) => {
       break;
     case 0:
       res.status(400).json({
-        Error: "Invalid code or user has already been verified."
+        Error: "Invalid code as user has already been verified."
       });
       break;
     case 1:
       res.json({
-        Message: "User successfully verified."
+        Message: "User successfully verified on this site."
       });
       break;
   }
