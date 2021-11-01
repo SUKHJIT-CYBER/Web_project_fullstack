@@ -19,7 +19,35 @@ const AllUsers = () => {
   });
   return AllUsersArray;
 };
+// List all the users endpoint.
+app.get("/", (req, res) => {
+  if (req.session.CurrentUser) {
+    res.json(AllUsers());
+  } else {
+    res.status(400).json({
+      Error: "Not Logged In."
+    });
+  }
+});
 
+// Get one single user.
+app.get("/:Username", (req, res) => {
+  if (req.session.CurrentUser) {
+    const Username = req.params.Username.toLowerCase();
+    const User = AllUsers().find(user => user.Username === Username);
+    if (User) {
+      res.json(User);
+    } else {
+      res.status(404).json({
+        Error: "No such user exists."
+      });
+    }
+  } else {
+    res.status(400).json({
+      Error: "Not Logged In."
+    });
+  }
+});
 
 
 
